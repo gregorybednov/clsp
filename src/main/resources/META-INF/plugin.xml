@@ -11,6 +11,8 @@
     <depends>org.jetbrains.plugins.textmate</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="C/C++ notifications"
+                           displayType="BALLOON" />
         <fileType
                 name="C File"
                 extensions="c"
@@ -18,7 +20,7 @@
                 fieldName="INSTANCE"
                 implementationClass="org.gregorybednov.clsp.CFileType"/>
 
-        <!-- FUCKING $YourFileLanguage!!!!! -->
+        <!-- F*** $YourFileLanguage!!!!!  I spent f**ing week trying to understand what's wrong!!!-->
         <editorHighlighterProvider
                 filetype="C File"
                 implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateEditorHighlighterProvider" />
