@@ -1,0 +1,70 @@
+<idea-plugin>
+    <id>org.gregorybednov.clsp</id>
+    <name>C±± LSP</name>
+    <vendor>Gregory Bednov</vendor>
+    <description><![CDATA[
+    C±± LSP is a plugin for C/C++ language syntax highlighting
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.redhat.devtools.lsp4ij</depends>
+    <depends>org.jetbrains.plugins.textmate</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+                name="C File"
+                extensions="c"
+                language="C"
+                fieldName="INSTANCE"
+                implementationClass="org.gregorybednov.clsp.CFileType"/>
+
+        <!-- FUCKING $YourFileLanguage!!!!! -->
+        <editorHighlighterProvider
+                filetype="C File"
+                implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateEditorHighlighterProvider" />
+
+        <lang.syntaxHighlighterFactory
+                language="C"
+                implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateSyntaxHighlighterFactory" />
+
+        <fileType
+                name="C++ File"
+                extensions="cpp"
+                language="C++"
+                fieldName="INSTANCE"
+                implementationClass="org.gregorybednov.clsp.CppFileType"/>
+        <editorHighlighterProvider
+                filetype="C++ File"
+                implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateEditorHighlighterProvider" />
+
+        <lang.syntaxHighlighterFactory
+                language="C++"
+                implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateSyntaxHighlighterFactory" />
+
+
+        <textmate.bundleProvider implementation="org.gregorybednov.clsp.CTextMateBundleProvider"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.redhat.devtools.lsp4ij">
+        <languageMapping languageId="c" language="C" serverId="CLanguageServer"/>
+
+        <server id="CLanguageServer"
+                name="CLangD"
+                factoryClass="org.gregorybednov.clsp.CLanguageServerFactory">
+            <description><![CDATA[
+            Plugin for C/C++ languages using LSP via clangd.
+            ]]>
+            </description>
+        </server>
+
+        <languageMapping languageId="cpp" language="C++" serverId="CppLanguageServer"/>
+        <server id="CppLanguageServer"
+                name="C++LangD"
+                factoryClass="org.gregorybednov.clsp.CppLanguageServerFactory">
+            <description><![CDATA[
+            Plugin for C/C++ languages using LSP via clangd.
+            ]]>
+            </description>
+        </server>
+    </extensions>
+</idea-plugin>
