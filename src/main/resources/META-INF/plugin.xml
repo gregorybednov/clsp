@@ -42,9 +42,6 @@
         <lang.syntaxHighlighterFactory
                 language="C++"
                 implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateSyntaxHighlighterFactory" />
-
-
-        <textmate.bundleProvider implementation="org.gregorybednov.clsp.CTextMateBundleProvider"/>
     </extensions>
 
     <extensions defaultExtensionNs="com.redhat.devtools.lsp4ij">
