@@ -10,7 +10,18 @@
     <depends>com.redhat.devtools.lsp4ij</depends>
     <depends>org.jetbrains.plugins.textmate</depends>
 
+    <actions>
+        <action id="NewCFileAction" class="org.gregorybednov.NewCFileAction" >
+            <add-to-group group-id="NewGroup" relative-to-action="NewFile" anchor="before"/>
+        </action>
+        <action id="NewCppFileAction" class="org.gregorybednov.NewCppFileAction">
+            <add-to-group group-id="NewGroup" relative-to-action="NewFile" anchor="before"/>
+        </action>
+    </actions>
+
     <extensions defaultExtensionNs="com.intellij">
+        <internalFileTemplate name="DefaultTemplate.c"/>
+        <internalFileTemplate name="DefaultTemplate.cpp"/>
         <notificationGroup id="C/C++ notifications"
                            displayType="BALLOON" />
         <fileType
@@ -20,7 +31,6 @@
                 fieldName="INSTANCE"
                 implementationClass="org.gregorybednov.clsp.CFileType"/>
 
-        <!-- F*** $YourFileLanguage!!!!!  I spent f**ing week trying to understand what's wrong!!!-->
         <editorHighlighterProvider
                 filetype="C File"
                 implementationClass="org.jetbrains.plugins.textmate.language.syntax.highlighting.TextMateEditorHighlighterProvider" />
